@@ -11,6 +11,9 @@ pipeline {
     post {
         always {
             echo 'This will always run'
+            mail to: 'romushka1978+jenkins@gmail.com',
+                         subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+                         body: "Something is wrong with ${env.BUILD_URL}"
         }
         success {
             echo 'This will run only if successful'
